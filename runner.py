@@ -18,7 +18,7 @@ if args.name is not None:
     name = args.name
     name_args = []
     for n in name:
-        name_args.append('--name ' + '"' + n + '"')
+        name_args.append('--name ' + '"' + n + '"')  # --name "name1" --name "name2"
     script = ' '.join(name_args)
 
 if args.features is not None:
@@ -36,7 +36,10 @@ report_dir = str(datetime.now().strftime("%d-%b-%Y-%H-%M-%S-%p"))
 feature_path = 'features/ '
 allure_script = "-f allure_behave.formatter:AllureFormatter -o reports/{} ".format(report_dir)
 
-runner_script = "behave " + allure_script + '--logcapture ' + script
+capture_logs = " --logging-level DEBUG --logcapture -o reports/{}/debug.txt ".format(
+    report_dir)
+
+runner_script = "behave " + allure_script + script
 print(runner_script)
 
 # Running scripts
