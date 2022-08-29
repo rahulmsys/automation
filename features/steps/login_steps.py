@@ -8,19 +8,26 @@ from locators.login_page_locators import *
 from locators.home_page_locators import *
 from config.conf_vars import *
 from selenium.webdriver.support import expected_conditions as EC
+from features.helper.logger import Logger
+
+log_file = 'test.log'
+log = Logger(log_file)
 
 
 @given('Open web browser')
 def open_web_browser(context):
     context.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     context.driver.get(base_url)
+    log.info("Web browser opened")
     context.driver.maximize_window()
+    log.info("Web browser maximized")
     context.driver.wait = WebDriverWait(context.driver, 30)
 
 
 @when('I am on the OrangeHRM login page')
 def login_page(context):
     assert context.driver.wait.until(EC.title_is(login_page_title)) is True
+    log.info("Login page opened")
 
 
 @then('I enter "{uname}" as username and "{pwd}" as password')

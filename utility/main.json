@@ -1,0 +1,73 @@
+{
+  "name": "Login into OrangeHRM",
+  "status": "passed",
+  "steps": [
+    {
+      "name": "Given Open web browser",
+      "status": "passed",
+      "start": 1661498731476,
+      "stop": 1661498736505
+    },
+    {
+      "name": "When I am on the OrangeHRM login page",
+      "status": "passed",
+      "start": 1661498736505,
+      "stop": 1661498736517
+    },
+    {
+      "name": "Then I enter \"Admin\" as username and \"admin123\" as password",
+      "status": "passed",
+      "start": 1661498736517,
+      "stop": 1661498737153
+    },
+    {
+      "name": "And I click on login button",
+      "status": "passed",
+      "start": 1661498737153,
+      "stop": 1661498737210
+    },
+    {
+      "name": "Then I should see the OrangeHRM home page",
+      "status": "passed",
+      "start": 1661498737210,
+      "stop": 1661498740203
+    },
+    {
+      "name": "And Close the web browser",
+      "status": "passed",
+      "start": 1661498740204,
+      "stop": 1661498742280
+    }
+  ],
+  "start": 1661498731475,
+  "stop": 1661498742280,
+  "uuid": "e07abd65-54a2-4204-afa9-132ddbbbabd0",
+  "historyId": "4c91be5260849ea19c4153977c2d9783",
+  "fullName": "Login into OrangeHRM: Login into OrangeHRM",
+  "labels": [
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "tag",
+      "value": "demo"
+    },
+    {
+      "name": "tag",
+      "value": "first"
+    },
+    {
+      "name": "feature",
+      "value": "Login into OrangeHRM"
+    },
+    {
+      "name": "framework",
+      "value": "behave"
+    },
+    {
+      "name": "language",
+      "value": "cpython3"
+    }
+  ]
+}
