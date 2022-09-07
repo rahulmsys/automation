@@ -18,10 +18,10 @@ class SendReportEmail:
         self.end_time = kwargs.get('end_time')
         self.time_elapsed = kwargs.get('time_elapsed')
 
-    def send_gmail(self):
+    def send_email(self):
         sender = 'rraj@msystechnologies.com'
-        receiver = 'rraj@msystechnologies.com'
-        password = 'ccqzizgklceribtw'
+        receiver = 'hmshereef@msystechnologies.com,rraj@msystechnologies.com'
+        password = 'xvkqcscwurjerjqt'
         curr_date = datetime.now().strftime('%d-%b-%Y')
         msg = MIMEMultipart()
         msg['From'] = sender

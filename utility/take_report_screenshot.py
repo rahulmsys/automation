@@ -12,7 +12,7 @@ class TestReportScreenshot:
 
     def save_image(self):
         options = webdriver.ChromeOptions()
-        options.add_argument('headless')
+        options.add_argument('--headless')
         driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
         time.sleep(3)

@@ -23,4 +23,12 @@ def json_to_dict_all(json_dir):
 
 report_path = os.path.abspath('../reports/22-Aug-2022-12-33-22-PM')
 data = json_to_dict_all(report_path)
-pprint(data[0])
+# pprint(data[0])
+
+total_features_executed = 0
+total_scenarios_executed = 0
+total_scenarios_passed = 0
+total_scenarios_failed = 0
+total_scenarios_skipped = 0
+title = 'Test Report'
+
