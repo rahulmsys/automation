@@ -58,7 +58,7 @@ if __name__ == '__main__':
     #     report_dir)
     # capture_log = '--logging-level DEBUG --logcapture --outfile tmp/debug.txt '
 
-    script = 'features/orangehrm_login.feature'
+    # script = 'features/orangehrm_login.feature'
     if not len(sys.argv) > 1:
         # script = feature_path
         runner_script = "behave" + ' ' + allure_script + ' ' + script
@@ -71,6 +71,7 @@ if __name__ == '__main__':
         e_time = end_time.strftime('%I:%M:%S %p')
         total_time = (end_time - start_time).total_seconds()
         time_elapsed = convert_time(total_time)
+        print(f'Test started at {time_now} and ended at {e_time}. Total time taken: {time_elapsed}')
     else:
         runner_script = "behave" + ' ' + allure_script + ' ' + script
         print(f'Executing test script: {runner_script}')
@@ -82,6 +83,7 @@ if __name__ == '__main__':
         e_time = end_time.strftime('%I:%M:%S %p')
         total_time = (end_time - start_time).total_seconds()
         time_elapsed = convert_time(total_time)
+        print(f'Test started at {time_now} and ended at {e_time}. Total time taken: {time_elapsed}')
         os.system("allure generate -c reports/{} -o allure-report/{}".format(report_dir, report_dir))
 
     if args.mail:
@@ -93,8 +95,7 @@ if __name__ == '__main__':
         report_email = SendReportEmail(template_path='resources/email_reports_template.html',
                                        attachment_dir='reports/{}'.format(report_dir),
                                        report_screenshot_path='reports/{}/report.png'.format(report_dir),
-                                       start_time=time_now, end_time=e_time, total_time=time_elapsed)
+                                       start_time=time_now, end_time=e_time, time_elapsed=time_elapsed)
         report_email.send_email()
-        print('Email report sent')
 
     os.system("allure open allure-report/{}".format(report_dir))

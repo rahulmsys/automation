@@ -1,7 +1,8 @@
 @first
 Feature: Login into OrangeHRM
 
-#  Background:
+  Background:
+
   @demo
     Scenario: Login into OrangeHRM
     Given Open web browser
