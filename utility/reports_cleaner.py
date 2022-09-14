@@ -23,3 +23,4 @@ def remove_files_from_dir(dir_path):
 
 
 remove_files_from_dir(dir_path=allure_report_path)
+remove_files_from_dir(dir_path=reports_path)

@@ -6,7 +6,7 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from pathlib import Path
+from utility.config_reader import ConfigReader
 
 
 class SendReportEmail:
@@ -17,16 +17,23 @@ class SendReportEmail:
         self.start_time = kwargs.get('start_time')
         self.end_time = kwargs.get('end_time')
         self.time_elapsed = kwargs.get('time_elapsed')
+        self.config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'config', 'email.cfg'))
+        self.conf_reader = ConfigReader(self.config_path)
 
     def send_email(self):
-        sender = 'rraj@msystechnologies.com'
-        receiver = 'rraj@msystechnologies.com'
-        password = 'xvkqcscwurjerjqt'
+        sender = self.conf_reader.get_config_value('email', 'sender')
+        print(f'Sender: {sender}')
+        to = self.conf_reader.get_config_value('email', 'to')
+        print(f'To: {to}')
+        cc = self.conf_reader.get_config_value('email', 'cc')
+        print(f'CC: {cc}')
+        password = self.conf_reader.get_config_value('email', 'password')
+        print(f'Password: {password}')
         curr_date = datetime.now().strftime('%d-%b-%Y')
         msg = MIMEMultipart()
         msg['From'] = sender
-        msg['To'] = receiver
-        msg['Cc'] = "rraj@msystechnologies.com"
+        msg['To'] = to
+        msg['Cc'] = cc
         msg['Subject'] = 'Test Report' + ' | ' + str(curr_date) + ' (no-reply)'
         with open(self.report_screenshot_path, 'rb') as f:
             img = MIMEImage(f.read())
@@ -58,6 +65,6 @@ class SendReportEmail:
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
         server.login(sender, password)
-        server.sendmail(sender, receiver, text)
+        server.sendmail(sender, to, text)
         server.quit()
         print("Test Report email sent successfully.")
